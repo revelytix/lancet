@@ -1,0 +1,14 @@
+Source: lancet
+Section: java
+Priority: optional
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Build-Depends: debhelper (>> 7), javahelper (>= 0.32) 
+Build-Depends-Indep: openjdk-6-jdk
+Standards-Version: 3.8.3
+Homepage: https://github.com/stuarthalloway/lancet
+
+Package: liblancet
+Architecture: all
+Depends: clojure1.2 | clojure, openjdk-6-jre | java2-runtime, ant1.7
+Description: Clojure wrapper for Ant
+ Dependency-based builds, Clojure Style, with optional Ant underneath.

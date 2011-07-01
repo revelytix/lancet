@@ -2,3 +2,10 @@ lib/
 classes/
 pom.xml
 *jar
+/debian/files
+/debian/liblancet.debhelper.log
+/debian/liblancet.substvars
+/debian/liblancet/DEBIAN/control
+/debian/liblancet/DEBIAN/md5sums
+/debian/liblancet/usr/share/doc/liblancet/changelog.Debian.gz
+/debian/liblancet/usr/share/doc/liblancet/copyright
