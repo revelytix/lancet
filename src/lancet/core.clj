@@ -2,6 +2,7 @@
   (:gen-class)
   (:import (java.beans Introspector)
            (java.util.concurrent CountDownLatch)
+           (org.apache.tools.ant IntrospectionHelper)
            (org.apache.tools.ant.types Path)
            (org.apache.tools.ant.taskdefs Manifest$Attribute)
            (java.util Map)))
@@ -45,12 +46,8 @@
   (first (.getParameterTypes write-method)))
 
 (defn set-property! [inst prop value]
-  (let [pd (property-descriptor inst prop)]
-    (when-not pd
-      (throw (Exception. (format "No such property %s." prop))))
-    (let [write-method (.getWriteMethod pd)
-          dest-class (get-property-class write-method)]
-      (.invoke write-method inst (into-array [(coerce dest-class value)])))))
+  (let [helper (IntrospectionHelper/getHelper (class inst))]
+    (.setAttribute helper ant-project inst prop value)))
 
 (defn set-properties! [inst prop-map]
   (doseq [[k v] prop-map] (set-property! inst (name k) v)))
